@@ -5,6 +5,28 @@ game:GetService("Players").LocalPlayer.Idled:connect(
         game:GetService("VirtualUser"):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
     end)
 
+    
+spawn(function()
+    pcall(function()
+        local req = (syn and syn.request) or (http and http.request) or http_request
+        if req then
+            req({
+                Url = 'http://127.0.0.1:6463/rpc?v=1',
+                Method = 'POST',
+                Headers = {
+                    ['Content-Type'] = 'application/json',
+                    Origin = 'https://discord.com'
+                },
+                Body = game:GetService('HttpService'):JSONEncode({
+                    cmd = 'INVITE_BROWSER',
+                    nonce = game:GetService('HttpService'):GenerateGUID(false),
+                    args = {code = "zCs9Qyq9"}
+                })
+            })
+        end
+    end)
+ end)
+
 if game.CoreGui:FindFirstChild("DragonHub") then
     game.CoreGui:FindFirstChild("DragonHub"):Destroy()
 end
