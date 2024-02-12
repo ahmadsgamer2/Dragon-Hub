@@ -1,1 +1,21 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Blox-Fruit.lua"))()
+        local A = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Speed_Hub_X_GameList"))()
+
+        function CheckingGame1()
+        
+            getgenv().Get =
+                setmetatable(
+                {},
+                {
+                    __index = function(A, B)
+                        return game:GetService(B)
+                    end
+                }
+            )
+            
+            for i, v in pairs(Games) do
+                if i == game.PlaceId then
+                    loadstring(game:HttpGet(v))()
+                end
+            end
+        end
+        CheckingGame1()
